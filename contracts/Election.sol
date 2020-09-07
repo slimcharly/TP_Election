@@ -27,10 +27,12 @@ using SafeMath for uint256;
     // voted event
     event votedEvent ( uint indexed _candidateId);
 
-    function addCandidate (string memory _name) public {
+    function addCandidate (string memory _name) public onlyOwner{
         candidatesCount ++;
         candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
     }
+    
+
 
     function vote (uint _candidateId) public {
         // require that they haven't voted before
